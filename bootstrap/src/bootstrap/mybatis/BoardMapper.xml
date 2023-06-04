@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bootstrap.mybatis.BoardMapper">
+
+    <select id="boardList" resultType="bootstrap.model.BoardVO">
+        select *, @rownum := @rownum + 1 As rownum from board, (select @rownum := 0) r order by board_num DESC;
+    </select>
+    
+    <insert id="boardInsert" parameterType="bootstrap.model.BoardVO">
+		insert into board(title, content, id) values(#{title}, #{content}, #{id})        
+    </insert>
+    
+    <select id="boardDetailView"  parameterType="Integer" resultType="bootstrap.model.BoardVO">
+        select * from board where board_num = #{board_num}
+    </select>
+    
+    <delete id="boardDelete" parameterType="Integer">
+    	delete from board where board_num = #{board_num}
+    </delete>
+    
+    <update id="boardUpdate" parameterType="bootstrap.model.BoardVO">
+        update board set title=#{title}, content=#{content} where board_num=#{board_num}
+    </update>
+    
+    <update id="boardCount" parameterType="Integer">
+        update board set view_cnt=view_cnt+1 where board_num=#{board_num}
+    </update>
+</mapper>
