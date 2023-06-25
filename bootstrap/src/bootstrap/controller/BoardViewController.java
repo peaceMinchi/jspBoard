@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bootstrap.model.BoardDAO;
 import bootstrap.model.BoardVO;
-
+import bootstrap.model.PageVO;
 public class BoardViewController implements Controller{
 
 	@Override
@@ -20,11 +20,21 @@ public class BoardViewController implements Controller{
 		// 1. Model 연동
 		// 2. 객체바인딩
 		// 3. 다음페이지정보 (view)
+		
+		int currentPage = 1; // = pageNum
+		if (request.getParameter("p") != null) {
+			currentPage = Integer.parseInt(request.getParameter("p"));
+		}
 		BoardDAO dao = new BoardDAO();
-		List<BoardVO> list = dao.boardList();
-//		int boardTotal = dao.boardTotal();
+		int totalCount = dao.boardListTotalCount();
+		PageVO pageVO = new PageVO(currentPage, totalCount);
+		System.out.print("pageVO:::::" + pageVO);
+		List<BoardVO> list = dao.boardList(pageVO);
+		
 		request.setAttribute("list", list);
-
+		request.setAttribute("totalCount", totalCount);
+		System.out.println("totalCount : " + totalCount);
+		request.setAttribute("pageVO", pageVO);
 		
 		return "home";
 	}

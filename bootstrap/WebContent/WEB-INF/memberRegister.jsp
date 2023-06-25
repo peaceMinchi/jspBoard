@@ -23,6 +23,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -43,7 +44,7 @@
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead bg-primary text-white text-center">
+        <%-- <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
                 <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
@@ -96,27 +97,30 @@
 		<!-- < 이전페이지 부분 입니다 -->
 					<div style="display: table-cell; vertical-align: middle; text-align: center; padding-left: 250px; padding-right: 250px;">
 						<div style="display: inline-block;">
-							<c:if test="${pageVO.prev}">
-								<a href="?p=${pageVO.startPage - 1}&t=&q=" class="btn btn-prev" >이전</a>
+							<c:set var="page" value="${(param.p == null)?1:param.p }"/>
+							<c:set var="startNum" value="${page-(page-1)%5 }"/>
+							<c:set var="lastNum" value="23"/>
+							<c:if test="${startNum>1}">
+								<a href="?p=${startNum-1}&t=&q=" class="btn btn-prev" >이전</a>
 							</c:if>
-							<c:if test="${!pageVO.prev}">
+							<c:if test="${startNum<=1}">
 								<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');"><</span>
 							</c:if>
 						</div>
 			<!-- 페이징 1 2 3 4 5 부분 입니다 -->
 						<div style="display: inline-block;">
 							<ul class="-list-" style="list-style: none; padding-left:0px; text-align: center;">
-								<c:forEach var="i" begin="${pageVO.startPage}" end="${pageVO.endPage}">
-								<li style="display: inline-block; padding-right: 10px; padding-left: 10px;"><a class="-text- orange bold" href="?p=${i}&t=&q=">${i}</a></li> 
+								<c:forEach var="i" begin="0" end="4">
+								<li style="display: inline-block; padding-left: 20px;"><a class="-text- orange bold" href="?p=${startNum+i}&t=&q=">${startNum+i}</a></li> 
 								</c:forEach>
 							</ul>
 						</div>
 			<!-- > 다음페이지 부분 입니다 -->
 						<div style="display: inline-block;">
-							<c:if test="${pageVO.next}">
-								<a href="?p=${pageVO.endPage + 1}&t=&q=" class="btn btn-prev" >다음</a>
+							<c:if test="${startNum+5<lastNum }">
+								<a href="?p=${startNum+5}&t=&q=" class="btn btn-prev" >다음</a>
 							</c:if>
-							<c:if test="${!pageVO.next}">
+							<c:if test="${startNum+5>=lastNum }">
 								<span class="btn btn-prev" onclick="alert('다음 페이지가 없습니다.');">></span>
 							</c:if>
 						</div>
@@ -218,12 +222,18 @@
                         <i class="fas fa-download me-2"></i>
                         Free Download!
                     </a>
-        </section>
+        </section> --%>
+        
+        
+        
+        
+        
         <!-- Contact Section-->
         <section class="page-section" id="contact">
             <div class="container">
                 <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
+                <br><br>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Member Register</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -240,32 +250,56 @@
                         <!-- To make this form functional, sign up at-->
                         <!-- https://startbootstrap.com/solution/contact-forms-->
                         <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <form id="form1" method="post" action="memberInsert.do">
+                        	 <!-- Id input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="id" name="id" type="text" placeholder="Enter your id..." />
+                                <label for="id">Id</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                             <!-- pass input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="pass" name="pass" type="password" placeholder="Enter your password..."/>
+                                <label for="pass">Password</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <!-- passCheck input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="passCheck" name="passCheck" type="password" placeholder="check your password..."/>
+                                <label for="passCheck">Check Password</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
                             <!-- Name input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                <input class="form-control" id="name" name="name" type="text" placeholder="Enter your name..."/>
                                 <label for="name">Full name</label>
                                 <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                             </div>
-                            <!-- Email address input-->
+                            <!-- Age input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                <input class="form-control" id="age" name="age" type="text" placeholder="Enter your Age..."/>
+                                <label for="age">Age</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <!-- Email address input-->
+                          	<div class="form-floating mb-3">
+                                <input class="form-control" id="emaill" name="email" type="email" placeholder="name@example.com"/>
                                 <label for="email">Email address</label>
                                 <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                                 <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                             </div>
                             <!-- Phone number input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                                <input class="form-control" id="phone" name="phone" type="tel" placeholder="(123) 456-7890"/>
                                 <label for="phone">Phone number</label>
                                 <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                             </div>
                             <!-- Message input-->
-                            <div class="form-floating mb-3">
+                            <!-- <div class="form-floating mb-3">
                                 <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
                                 <label for="message">Message</label>
                                 <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                            </div>
+                            </div> -->
                             <!-- Submit success message-->
                             <!---->
                             <!-- This is what your users will see when the form-->
@@ -284,7 +318,7 @@
                             <!-- an error submitting the form-->
                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                             <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
+                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Send</button>
                         </form>
                     </div>
                 </div>

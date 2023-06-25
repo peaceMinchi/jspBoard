@@ -59,4 +59,13 @@ select @rownum := @rownum +1 from board;
 
 
 select id, title, content, row_number() over(order by board_num asc) as a from board;
+commit;
 
+SELECT
+        	*
+        	, @ROWNUM := @ROWNUM + 1 AS ROWNUM 
+          FROM BOARD
+          , (SELECT @ROWNUM := 0) R
+         ORDER BY 
+          	BOARD_NUM DESC
+         LIMIT 6, 3;

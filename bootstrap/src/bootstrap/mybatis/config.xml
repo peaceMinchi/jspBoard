@@ -17,5 +17,6 @@
   </environments>
   <mappers>
     <mapper resource="bootstrap/mybatis/BoardMapper.xml"/>
+    <mapper resource="bootstrap/mybatis/MemberMapper.xml"/>
   </mappers>
 </configuration>

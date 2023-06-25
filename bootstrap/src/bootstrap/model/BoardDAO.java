@@ -23,11 +23,18 @@ public class BoardDAO {
 		}
 	}
 	// 게시판전체 리스트보기
-	public List<BoardVO> boardList(){
+	public List<BoardVO> boardList(PageVO pageVO){
 		SqlSession session = sqlSessionFactory.openSession();
-		List<BoardVO> list = session.selectList("boardList");
+		List<BoardVO> list = session.selectList("boardList", pageVO);
 		session.close();
 		return list;
+	}
+	
+	public int boardListTotalCount() {
+		SqlSession session = sqlSessionFactory.openSession();
+		int totalCount = session.selectOne("boardListTotalCount");
+		session.close();
+		return totalCount;
 	}
 
 	// 게시판 글 작성(insert)

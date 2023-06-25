@@ -11,6 +11,8 @@ import bootstrap.controller.BoardUpdateController;
 import bootstrap.controller.BoardUpdateView;
 import bootstrap.controller.Controller;
 import bootstrap.controller.HomeController;
+import bootstrap.controller.MemberInsertController;
+import bootstrap.controller.MemberRegisterController;
 
 public class HandlerMapping {
 	private HashMap<String, Controller> mappings;
@@ -25,6 +27,9 @@ public class HandlerMapping {
 		mappings.put("/boardDelete.do", new BoardDelete());
 		mappings.put("/boardUpdateView.do", new BoardUpdateView());
 		mappings.put("/boardUpdate.do", new BoardUpdateController());
+		
+		mappings.put("/memberRegister.do", new MemberRegisterController());
+		mappings.put("/memberInsert.do", new MemberInsertController());
 	}
 	// 넘겨주는 메서드     key = /memberList.do
 	public Controller getController(String key) {
