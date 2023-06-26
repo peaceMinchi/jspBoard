@@ -28,12 +28,10 @@ public class BoardViewController implements Controller{
 		BoardDAO dao = new BoardDAO();
 		int totalCount = dao.boardListTotalCount();
 		PageVO pageVO = new PageVO(currentPage, totalCount);
-		System.out.print("pageVO:::::" + pageVO);
 		List<BoardVO> list = dao.boardList(pageVO);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("totalCount", totalCount);
-		System.out.println("totalCount : " + totalCount);
 		request.setAttribute("pageVO", pageVO);
 		
 		return "home";
