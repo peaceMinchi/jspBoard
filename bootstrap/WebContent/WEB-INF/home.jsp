@@ -56,6 +56,15 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 </div>
+					<form action="board.do" method="get">
+						<select name="keyword">
+							<option value="Title">제목(Title)</option>
+							<option value="Content">내용(Content)</option>
+							<option value="Name">작성자(Name)</option>		
+						</select>
+					<input type="text" name="searchKey">
+					<input type="submit" value="Search">
+					</form>
 	                <table class="table">
 					  <thead>
 					    <tr>

@@ -28,6 +28,7 @@ public class HandlerMapping {
 		mappings.put("/boardUpdateView.do", new BoardUpdateView());
 		mappings.put("/boardUpdate.do", new BoardUpdateController());
 		
+		// 회원가입 컨트롤러
 		mappings.put("/memberRegister.do", new MemberRegisterController());
 		mappings.put("/memberInsert.do", new MemberInsertController());
 	}

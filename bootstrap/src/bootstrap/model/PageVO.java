@@ -12,6 +12,17 @@ public class PageVO {
 	private int pageSize = 10; // 페이지네이션개수
 	private int offset = 0; //조회할 목록 시작번호
 	
+	private String searchKey; // 검색 키워드
+	
+	public String getSearchKey() {
+		return searchKey;
+	}
+
+
+	public void setSearchKey(String searchKey) {
+		this.searchKey = searchKey;
+	}
+
 	// 생성자에서는 객체가 생성될때 계산을 처리
 	public PageVO(int pageNum, int totalCount) {
 		this.pageNum = pageNum;

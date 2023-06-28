@@ -4,17 +4,21 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bootstrap.mybatis.BoardMapper">
 
-    <select id="boardList" parameterType="bootstrap.model.PageVO" resultType="bootstrap.model.BoardVO">
+<select id="boardList" parameterType="bootstrap.model.PageVO" resultType="bootstrap.model.BoardVO">
       SELECT
-        	T.*
+            T.*
           FROM (
-	        SELECT
-	        	*
-	        	, @ROWNUM := @ROWNUM + 1 AS ROWNUM 
-	          FROM BOARD
-	          , (SELECT @ROWNUM := 0) AS R
-	      	ORDER BY 
-	          	BOARD_NUM DESC
+            SELECT
+                *
+                , @ROWNUM := @ROWNUM + 1 AS ROWNUM 
+              FROM BOARD
+              , (SELECT @ROWNUM := 0) AS R
+            WHERE 1=1
+            <if test="searchKey != '' and searchKey != null">
+                AND TITLE LIKE CONCAT('%', #{searchKey}, '%')
+            </if>
+            ORDER BY 
+                BOARD_NUM DESC
         ) AS T
         LIMIT #{offset}, #{listSize}
     </select>

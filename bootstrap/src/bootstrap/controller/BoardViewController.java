@@ -20,6 +20,7 @@ public class BoardViewController implements Controller{
 		// 1. Model 연동
 		// 2. 객체바인딩
 		// 3. 다음페이지정보 (view)
+		String searchKey = request.getParameter("searchKey"); // 검색어
 		
 		int currentPage = 1; // = pageNum
 		if (request.getParameter("p") != null) {
@@ -28,6 +29,7 @@ public class BoardViewController implements Controller{
 		BoardDAO dao = new BoardDAO();
 		int totalCount = dao.boardListTotalCount();
 		PageVO pageVO = new PageVO(currentPage, totalCount);
+		pageVO.setSearchKey(searchKey);
 		List<BoardVO> list = dao.boardList(pageVO);
 		
 		request.setAttribute("list", list);
