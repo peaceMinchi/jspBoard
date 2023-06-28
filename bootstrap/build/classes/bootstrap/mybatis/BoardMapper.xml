@@ -21,7 +21,7 @@
                 BOARD_NUM DESC
         ) AS T
         LIMIT #{offset}, #{listSize}
-    </select>
+    </select> 
     
     <select id="boardListTotalCount" resultType="int">
        SELECT
