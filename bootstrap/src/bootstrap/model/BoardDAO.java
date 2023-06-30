@@ -31,9 +31,9 @@ public class BoardDAO {
 	}
 	
 	// 게시판 데이터 전부 가지고 오기
-	public int boardListTotalCount() {
+	public int boardListTotalCount(PageVO pageVO) {
 		SqlSession session = sqlSessionFactory.openSession();
-		int totalCount = session.selectOne("boardListTotalCount");
+		int totalCount = session.selectOne("boardListTotalCount", pageVO);
 		session.close();
 		return totalCount;
 	}

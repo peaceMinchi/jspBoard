@@ -21,17 +21,24 @@ public class BoardViewController implements Controller{
 		// 2. 객체바인딩
 		// 3. 다음페이지정보 (view)
 		String searchKey = request.getParameter("searchKey"); // 검색어
+		String keyword = request.getParameter("keyword");
 		
 		int currentPage = 1; // = pageNum
 		if (request.getParameter("p") != null) {
 			currentPage = Integer.parseInt(request.getParameter("p"));
 		}
+
 		BoardDAO dao = new BoardDAO();
-		int totalCount = dao.boardListTotalCount();
-		PageVO pageVO = new PageVO(currentPage, totalCount);
+		PageVO pageVO = new PageVO();
 		pageVO.setSearchKey(searchKey);
-		List<BoardVO> list = dao.boardList(pageVO);
+		pageVO.setKeyword(keyword);
 		
+		int totalCount = dao.boardListTotalCount(pageVO);
+		pageVO.setPageNum(currentPage);
+		pageVO.setTotalCount(totalCount);
+		pageVO.setPageVO();
+		
+		List<BoardVO> list = dao.boardList(pageVO);
 		request.setAttribute("list", list);
 		request.setAttribute("totalCount", totalCount);
 		request.setAttribute("pageVO", pageVO);

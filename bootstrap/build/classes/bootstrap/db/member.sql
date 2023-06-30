@@ -69,3 +69,24 @@ SELECT
          ORDER BY 
           	BOARD_NUM DESC
          LIMIT 6, 3;
+
+         
+         
+         
+         
+    <select id="boardList" parameterType="bootstrap.model.PageVO" resultType="bootstrap.model.BoardVO">
+      SELECT
+        	T.*
+          FROM (
+	        SELECT
+	        	*
+	        	, @ROWNUM := @ROWNUM + 1 AS ROWNUM 
+	          FROM BOARD
+	          , (SELECT @ROWNUM := 0) AS R
+	      	ORDER BY 
+	          	BOARD_NUM DESC
+        ) AS T
+        LIMIT #{offset}, #{listSize}
+    </select>
+    
+    

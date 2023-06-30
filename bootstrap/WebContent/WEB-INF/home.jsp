@@ -58,9 +58,9 @@
                 </div>
 					<form action="board.do" method="get">
 						<select name="keyword">
-							<option value="Title">제목(Title)</option>
-							<option value="Content">내용(Content)</option>
-							<option value="Name">작성자(Name)</option>		
+							<option value="title">제목(Title)</option>
+							<option value="content">내용(Content)</option>
+							<option value="name">작성자(Name)</option>		
 						</select>
 					<input type="text" name="searchKey">
 					<input type="submit" value="Search">
@@ -106,7 +106,7 @@
 					<div style="display: table-cell; vertical-align: middle; text-align: center; padding-left: 250px; padding-right: 250px;">
 						<div style="display: inline-block;">
 							<c:if test="${pageVO.prev}">
-								<a href="?p=${pageVO.startPage - 1}&t=&q=" class="btn btn-prev" >이전</a>
+								<a href="?p=${pageVO.startPage - 1}&keyword=${pageVO.keyword}&searchKey=${pageVO.searchKey}" class="btn btn-prev" >이전</a>
 							</c:if>
 							<c:if test="${!pageVO.prev}">
 								<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');"><</span>
@@ -116,14 +116,14 @@
 						<div style="display: inline-block;">
 							<ul class="-list-" style="list-style: none; padding-left:0px; text-align: center;">
 								<c:forEach var="i" begin="${pageVO.startPage}" end="${pageVO.endPage}">
-								<li style="display: inline-block; padding-right: 10px; padding-left: 10px;"><a class="-text- orange bold" href="?p=${i}&t=&q=">${i}</a></li> 
+								<li style="display: inline-block; padding-right: 10px; padding-left: 10px;"><a class="-text- orange bold" href="?p=${i}&keyword=${pageVO.keyword}&searchKey=${pageVO.searchKey}">${i}</a></li> 
 								</c:forEach>
 							</ul>
 						</div>
 			<!-- > 다음페이지 부분 입니다 -->
 						<div style="display: inline-block;">
 							<c:if test="${pageVO.next}">
-								<a href="?p=${pageVO.endPage + 1}&t=&q=" class="btn btn-prev" >다음</a>
+								<a href="?p=${pageVO.endPage + 1}&keyword=${pageVO.keyword}&searchKey=${pageVO.searchKey}" class="btn btn-prev" >다음</a>
 							</c:if>
 							<c:if test="${!pageVO.next}">
 								<span class="btn btn-prev" onclick="alert('다음 페이지가 없습니다.');">></span>

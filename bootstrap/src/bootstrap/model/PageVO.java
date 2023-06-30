@@ -7,26 +7,22 @@ public class PageVO {
 	private boolean prev, next; // 이전버튼, 다음버튼 활성화여부
 	
 	private int pageNum; // 현재 조회하는 페이지번호
-	private int listSize = 3; // 화면에 그려질 데이터 (화면에 보여지는 데이터 개수)
+	private int listSize = 2; // 화면에 그려질 데이터 (화면에 보여지는 데이터 개수)
 	private int totalCount; // 전체게시글 수
 	private int pageSize = 10; // 페이지네이션개수
 	private int offset = 0; //조회할 목록 시작번호
 	
 	private String searchKey; // 검색 키워드
-	
-	public String getSearchKey() {
-		return searchKey;
-	}
-
-
-	public void setSearchKey(String searchKey) {
-		this.searchKey = searchKey;
-	}
+	private String keyword; // 검색 조건
 
 	// 생성자에서는 객체가 생성될때 계산을 처리
-	public PageVO(int pageNum, int totalCount) {
-		this.pageNum = pageNum;
-		this.totalCount = totalCount;
+	public PageVO() {
+
+	}
+	
+	public void setPageVO () {
+//		this.pageNum = pageNum;
+//		this.totalCount = totalCount;
 		
 		// 1. endPage결정
 //		 ex) 조회하는 페이지 1 -> 끝번호 10					1, 2, 3, 4, 5, 6, 7, 8, 9, 10
@@ -72,42 +68,34 @@ public class PageVO {
 		
 		// GetListService에서 페이지VO 계산처리 코드작성...
 	}
-
 	
 	public int getStartPage() {
 		return startPage;
 	}
 
-
 	public void setStartPage(int startPage) {
 		this.startPage = startPage;
 	}
-
 
 	public int getEndPage() {
 		return endPage;
 	}
 
-
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
-
 
 	public boolean isPrev() {
 		return prev;
 	}
 
-
 	public void setPrev(boolean prev) {
 		this.prev = prev;
 	}
 
-
 	public boolean isNext() {
 		return next;
 	}
-
 
 	public void setNext(boolean next) {
 		this.next = next;
@@ -123,26 +111,39 @@ public class PageVO {
 		this.pageNum = pageNum;
 	}
 
-
 	public int getListSize() {
 		return listSize;
 	}
-
 
 	public void setListSize(int listSize) {
 		this.listSize = listSize;
 	}
 
-
 	public int getTotalCount() {
 		return totalCount;
 	}
-
 
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 	}
 
+	public String getSearchKey() {
+		return searchKey;
+	}
+
+
+	public void setSearchKey(String searchKey) {
+		this.searchKey = searchKey;
+	}
+	
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 
 	@Override
 	public String toString() {

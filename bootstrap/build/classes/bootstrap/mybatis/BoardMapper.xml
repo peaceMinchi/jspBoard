@@ -15,18 +15,38 @@
               , (SELECT @ROWNUM := 0) AS R
             WHERE 1=1
             <if test="searchKey != '' and searchKey != null">
-                AND TITLE LIKE CONCAT('%', #{searchKey}, '%')
+                <if test="keyword != '' and keyword != null and keyword == 'title'">
+                	AND TITLE LIKE CONCAT('%', #{searchKey}, '%')
+                </if>
+                <if test="keyword != '' and keyword != null and keyword == 'content'">
+                	AND CONTENT LIKE CONCAT('%', #{searchKey}, '%')
+                </if>
+                <if test="keyword != '' and keyword != null and keyword == 'name'">
+                	AND ID LIKE CONCAT('%', #{searchKey}, '%')
+                </if>
             </if>
             ORDER BY 
                 BOARD_NUM DESC
         ) AS T
         LIMIT #{offset}, #{listSize}
-    </select> 
+    </select>
     
-    <select id="boardListTotalCount" resultType="int">
+    <select id="boardListTotalCount" parameterType="bootstrap.model.PageVO" resultType="int">
        SELECT
        		COUNT(*)
        	 FROM BOARD
+       	 WHERE 1=1
+		<if test="searchKey != '' and searchKey != null">
+           <if test="keyword != '' and keyword != null and keyword == 'title'">
+           	AND TITLE LIKE CONCAT('%', #{searchKey}, '%')
+           </if>
+           <if test="keyword != '' and keyword != null and keyword == 'content'">
+           	AND CONTENT LIKE CONCAT('%', #{searchKey}, '%')
+           </if>
+           <if test="keyword != '' and keyword != null and keyword == 'name'">
+           	AND ID LIKE CONCAT('%', #{searchKey}, '%')
+           </if>
+       </if>
     </select>
     
     <insert id="boardInsert" parameterType="bootstrap.model.BoardVO">
