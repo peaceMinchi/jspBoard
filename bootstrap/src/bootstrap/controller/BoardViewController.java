@@ -21,9 +21,9 @@ public class BoardViewController implements Controller{
 		// 2. 객체바인딩
 		// 3. 다음페이지정보 (view)
 		String searchKey = request.getParameter("searchKey"); // 검색어
-		String keyword = request.getParameter("keyword");
+		String keyword = request.getParameter("keyword"); // 검색(제목, 내용, 작성자)
 		
-		int currentPage = 1; // = pageNum
+		int currentPage = 1; // = pageNum (페이지 접속 했을때 기본을 1로 설정)
 		if (request.getParameter("p") != null) {
 			currentPage = Integer.parseInt(request.getParameter("p"));
 		}
