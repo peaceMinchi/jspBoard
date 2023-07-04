@@ -12,6 +12,9 @@ import bootstrap.controller.BoardUpdateView;
 import bootstrap.controller.Controller;
 import bootstrap.controller.HomeController;
 import bootstrap.controller.MemberInsertController;
+import bootstrap.controller.MemberLoginController;
+import bootstrap.controller.MemberLoginPageController;
+import bootstrap.controller.MemberLogoutController;
 import bootstrap.controller.MemberRegisterController;
 
 public class HandlerMapping {
@@ -31,6 +34,13 @@ public class HandlerMapping {
 		// 회원가입 컨트롤러
 		mappings.put("/memberRegister.do", new MemberRegisterController());
 		mappings.put("/memberInsert.do", new MemberInsertController());
+		
+		// 로그인 컨트롤러
+		mappings.put("/memberLoginPage.do", new MemberLoginPageController());
+		mappings.put("/memberLogin.do", new MemberLoginController());
+		
+		// 로그아웃 컨트롤러
+		mappings.put("/memberLogout.do", new MemberLogoutController());
 	}
 	// 넘겨주는 메서드     key = /memberList.do
 	public Controller getController(String key) {

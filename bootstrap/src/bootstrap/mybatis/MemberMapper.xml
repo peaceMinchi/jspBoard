@@ -25,4 +25,7 @@
         )       
     </insert>
     
+    <select id="memberLogin" parameterType="bootstrap.model.MemberVO" resultType="String">
+        select name from member where id=#{id} and pass=#{pass}
+    </select>
 </mapper>

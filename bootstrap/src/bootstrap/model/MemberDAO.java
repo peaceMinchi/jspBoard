@@ -30,6 +30,13 @@ public class MemberDAO {
 		   session.close();//반납
 		   return cnt;
 	}
+
+	public String memberLogin(MemberVO vo) {
+		SqlSession session=sqlSessionFactory.openSession();
+		String name = session.selectOne("memberLogin", vo);
+		session.close();
+		return name;
+	}
 	
 	
 	
