@@ -38,7 +38,7 @@ public class MemberLoginController implements Controller{
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 			session.setAttribute("name", name);
-//			session.setAttribute("msg", "환영합니다!");
+			session.setAttribute("msg", "환영합니다!");
 		}else {
 			//실패
 			request.getSession().setAttribute("id", "");

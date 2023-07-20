@@ -19,7 +19,8 @@ public class MemberLogoutController implements Controller{
 				
 				// 2. 브라우저를 종료 하는 방법.
 				
-				// 3. 세션이 종료될때 까지 기다리는 방법.(세션타임아웃 : 30분 = 1800초)
+				// 3. 세션이 종료될때 까지 기다리는 방법.(세션타임아웃 : 30분 = 1800초) 
+		request.getSession().setAttribute("msg", "로그아웃 되었습니다.");
 				return "redirect:"+ctx+"/board.do";
 	}
 

@@ -147,7 +147,9 @@
 							</c:if>
 						</div>
 	           		</div>
+	           		<c:if test="${sessionScope.id!=null && sessionScope.id!=''}">
 	           		<button type="button" class="btn btn-success" onclick="location='boardInsertView.do'">작성하기</button>
+	           		</c:if>
 	                <!-- Masthead Subheading-->
                 <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
             </div>
