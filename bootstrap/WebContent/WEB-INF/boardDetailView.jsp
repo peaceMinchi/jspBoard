@@ -27,16 +27,21 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand" href="board.do">Start Bootstrap</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
+                        <c:if test="${sessionScope.id==null || sessionScope.id==''}">
+	                        <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li> -->
+	                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="memberLoginPage.do">로그인</a></li>
+	                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="memberRegister.do">회원가입</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.id!=null && sessionScope.id!=''}">
+                        	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="memberLogout.do">로그아웃</a></li>
+                    	</c:if>
                     </ul>
                 </div>
             </div>
@@ -99,7 +104,7 @@
                             </div> -->
                             <!-- Message input-->
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" name="content" ₩type="text" style="height: 10rem" data-sb-validations="required" name="content" readonly>${vo.content }</textarea>
+                                <textarea class="form-control" id="message" name="content" type="text" style="height: 10rem" data-sb-validations="required" name="content" readonly>${vo.content }</textarea>
                                 <label for="message">Message</label>
                                 <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                             </div>
@@ -121,8 +126,10 @@
                             <!-- an error submitting the form-->
                             <!-- <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div> -->
                             <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">수정</button>
-                            <button class="btn btn-danger btn-xl" id="submitButton2" type="button" onclick="deleteFn(${vo.board_num});">삭제</button>
+                            <c:if test="${isMyBoard == 'T'}">
+	                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">수정</button>
+	                            <button class="btn btn-danger btn-xl" id="submitButton2" type="button" onclick="deleteFn(${vo.board_num});">삭제</button>
+                            </c:if>
                         </c:if>  
                         </form>
                     </div>

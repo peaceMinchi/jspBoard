@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bootstrap.model.BoardDAO;
 import bootstrap.model.BoardVO;
@@ -23,6 +24,11 @@ public class BoardDetailViewController implements Controller{
 		BoardVO vo = dao.baordDetailView(board_num); // 기존에 보드출력 메서드
 		request.setAttribute("vo", vo);
 		
+		HttpSession session = request.getSession();
+		String sessionId = (String) session.getAttribute("id");
+		if(vo.getId() != null && sessionId != null && vo.getId().equals(sessionId)) {
+			request.setAttribute("isMyBoard", "T");
+		}
 		
 		return "boardDetailView";
 	}
