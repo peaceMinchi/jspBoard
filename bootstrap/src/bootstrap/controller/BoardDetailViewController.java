@@ -33,6 +33,5 @@ public class BoardDetailViewController implements Controller{
 		
 		return "boardDetailView";
 	}
-	// 커밋을 체크 해보겠습니다. 나중에 보면 삭제해 주세요.
 
 }
