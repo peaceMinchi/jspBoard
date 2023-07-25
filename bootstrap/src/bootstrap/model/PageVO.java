@@ -7,7 +7,7 @@ public class PageVO {
 	private boolean prev, next; // 이전버튼, 다음버튼 활성화여부
 	
 	private int pageNum; // 현재 조회하는 페이지번호
-	private int listSize = 2; // 화면에 그려질 데이터 (화면에 보여지는 데이터 개수)
+	private int listSize = 5; // 화면에 그려질 데이터 (화면에 보여지는 데이터 개수)
 	private int totalCount; // 전체게시글 수
 	private int pageSize = 10; // 페이지네이션개수
 	private int offset = 0; //조회할 목록 시작번호

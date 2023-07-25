@@ -22,9 +22,9 @@ public class BoardUpdateView implements Controller{
 		String id = request.getParameter("id");
 		String date = request.getParameter("date");
 		int view_cnt = Integer.parseInt(request.getParameter("view_cnt"));
-		int rownum = Integer.parseInt(request.getParameter("rownum"));
+//		int rownum = Integer.parseInt(request.getParameter("rownum"));
 		
-		BoardVO vo = new BoardVO(board_num, title, content, id, date, view_cnt, rownum);
+		BoardVO vo = new BoardVO(board_num, title, content, id, date, view_cnt);
 		request.setAttribute("vo", vo);
 		
 		return "boardUpdate";

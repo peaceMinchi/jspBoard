@@ -120,7 +120,7 @@
 					  </tbody>
 					</table>
 		<!-- < 이전페이지 부분 입니다 -->
-					<div style="display: table-cell; vertical-align: middle; text-align: center; padding-left: 250px; padding-right: 250px;">
+					<div style="display: table-cell; vertical-align: middle; text-align: center; padding-left: 500px; padding-right: 250px;">
 						<div style="display: inline-block;">
 							<c:if test="${pageVO.prev}">
 								<a href="?p=${pageVO.startPage - 1}&keyword=${pageVO.keyword}&searchKey=${pageVO.searchKey}" class="btn btn-prev" >이전</a>
@@ -148,10 +148,10 @@
 						</div>
 	           		</div>
 	           		<c:if test="${sessionScope.id!=null && sessionScope.id!=''}">
-	           		<button type="button" class="btn btn-success" onclick="location='boardInsertView.do'">작성하기</button>
+	           		<button type="button" class="btn btn-info" onclick="location='boardInsertView.do'">작성하기</button>
 	           		</c:if>
 	                <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
+                <!-- <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p> -->
             </div>
         </header>
         <!-- Portfolio Section-->

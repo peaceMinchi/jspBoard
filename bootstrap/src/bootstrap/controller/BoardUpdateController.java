@@ -22,10 +22,10 @@ public class BoardUpdateController implements Controller{
 		String id = request.getParameter("id");
 		String date = request.getParameter("date");
 		int view_cnt = Integer.parseInt(request.getParameter("view_cnt"));
-		int rownum = Integer.parseInt(request.getParameter("rownum"));
+//		int rownum = Integer.parseInt(request.getParameter("rownum"));
 		
 		BoardDAO dao = new BoardDAO();
-		BoardVO vo = new BoardVO(board_num, title, content, id, date, view_cnt, rownum);
+		BoardVO vo = new BoardVO(board_num, title, content, id, date, view_cnt);
 		int cnt = dao.boardUpdate(vo);
 		String nextPage = null;
 		if(cnt>0) {

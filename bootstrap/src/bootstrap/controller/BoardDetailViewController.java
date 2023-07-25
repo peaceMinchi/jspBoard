@@ -23,7 +23,7 @@ public class BoardDetailViewController implements Controller{
 		
 		BoardVO vo = dao.baordDetailView(board_num); // 기존에 보드출력 메서드
 		request.setAttribute("vo", vo);
-		 
+		
 		HttpSession session = request.getSession();
 		String sessionId = (String) session.getAttribute("id");
 		// 본인 작성한 게시물만 수정, 삭제 

@@ -24,7 +24,7 @@ public class BoardVO {
 		this.content = content;
 		this.id = id;
 	}
-	public BoardVO(int board_num, String title, String content, String id, String date, int view_cnt, int rownum) {
+	public BoardVO(int board_num, String title, String content, String id, String date, int view_cnt) {
 		super();
 		this.board_num = board_num;
 		this.title = title;
@@ -32,7 +32,6 @@ public class BoardVO {
 		this.id = id;
 		this.date = date;
 		this.view_cnt = view_cnt;
-		this.rownum = rownum;
 	}
 	
 
