@@ -26,7 +26,7 @@ public class BoardDetailViewController implements Controller{
 		
 		HttpSession session = request.getSession();
 		String sessionId = (String) session.getAttribute("id");
-		// 본인 작성한 게시물만 수정, 삭제
+		// 본인 작성한 게시물만 수정, 삭제 
 		if(vo.getId() != null && sessionId != null && vo.getId().equals(sessionId)) {
 			request.setAttribute("isMyBoard", "T");
 		}
