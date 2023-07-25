@@ -126,6 +126,7 @@
                             <!-- an error submitting the form-->
                             <!-- <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div> -->
                             <!-- Submit Button-->
+                           	<!-- 본인이 작성한 게시물만 수정, 삭제 가능하게 만듬. -->
                             <c:if test="${isMyBoard == 'T'}">
 	                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">수정</button>
 	                            <button class="btn btn-danger btn-xl" id="submitButton2" type="button" onclick="deleteFn(${vo.board_num});">삭제</button>
