@@ -9,7 +9,7 @@ public class PageVO {
 	private int pageNum; // 현재 조회하는 페이지번호
 	private int listSize = 5; // 화면에 그려질 데이터 (화면에 보여지는 데이터 개수)
 	private int totalCount; // 전체게시글 수
-	private int pageSize = 10; // 페이지네이션개수
+	private int pageSize = 3; // 페이지네이션개수
 	private int offset = 0; //조회할 목록 시작번호
 	
 	private String searchKey; // 검색 키워드
@@ -30,7 +30,9 @@ public class PageVO {
 //		 ex) 조회하는 페이지 11 -> 끝번호 20					11,12,13,14,15,16,17,18,19,20 
 //		 ex) 조회하는 페이지 15 -> 끝번호 20 
 //		 공식 = (int)Math.ceil(페이지번호 / 페이지네이션개수) * 페이지네이션개수
-		this.endPage = (int)Math.ceil(this.pageNum * 0.1) * this.pageSize; // = 10
+		//this.endPage = (int)Math.ceil(this.pageNum * 0.1) * this.pageSize; // = 10
+		this.endPage = (int)(Math.ceil(this.pageNum / (double)this.pageSize) * this.pageSize);
+		System.out.println(endPage);
 		
 		// 2. startPage결정
 		// 공식 = 끝페이지 - 페이지네이션개수 + 1

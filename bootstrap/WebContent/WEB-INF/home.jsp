@@ -65,7 +65,7 @@
                 <!-- Masthead Avatar Image-->
                 <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
+                <h1 class="masthead-heading text-uppercase mb-0">Minchi's Board</h1>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -126,7 +126,7 @@
 								<a href="?p=${pageVO.startPage - 1}&keyword=${pageVO.keyword}&searchKey=${pageVO.searchKey}" class="btn btn-prev" >이전</a>
 							</c:if>
 							<c:if test="${!pageVO.prev}">
-								<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');"><</span>
+								<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');">이전</span>
 							</c:if>
 						</div>
 			<!-- 페이징 1 2 3 4 5 부분 입니다 -->
@@ -143,7 +143,7 @@
 								<a href="?p=${pageVO.endPage + 1}&keyword=${pageVO.keyword}&searchKey=${pageVO.searchKey}" class="btn btn-prev" >다음</a>
 							</c:if>
 							<c:if test="${!pageVO.next}">
-								<span class="btn btn-prev" onclick="alert('다음 페이지가 없습니다.');">></span>
+								<span class="btn btn-prev" onclick="alert('다음 페이지가 없습니다.');">다음</span>
 							</c:if>
 						</div>
 	           		</div>
