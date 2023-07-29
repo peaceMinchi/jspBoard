@@ -29,12 +29,12 @@ public class MemberInsertController implements Controller{
 		String nextPage = null;
 		if(cnt>0) {
 			// 가입을 성공하면
-			nextPage = "redirect:"+ctx+"/board.do";
 			request.setAttribute("msg", "회원가입에 성공 하셨습니다.");
+			nextPage = "redirect:"+ctx+"/board.do";
 		}else {
 			// 가입실패
 			throw new ServletException("not insert");
-		}
+		} 
 		
 		return nextPage;
 	}

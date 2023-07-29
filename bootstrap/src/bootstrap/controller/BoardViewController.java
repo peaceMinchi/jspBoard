@@ -16,12 +16,8 @@ public class BoardViewController implements Controller{
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		// POJO가 해야할 일의 범위.
-		// 1. Model 연동
-		// 2. 객체바인딩
-		// 3. 다음페이지정보 (view)
-		String searchKey = request.getParameter("searchKey"); // 검색어
-		String keyword = request.getParameter("keyword"); // 검색(제목, 내용, 작성자)
+		String searchKey = request.getParameter("searchKey"); // 검색어 받기
+		String keyword = request.getParameter("keyword"); // 검색(제목, 내용, 작성자) 받기
 		
 		int currentPage = 1; // = pageNum (페이지 접속 했을때 기본을 1로 설정)
 		if (request.getParameter("p") != null) {
@@ -37,6 +33,8 @@ public class BoardViewController implements Controller{
 		pageVO.setPageNum(currentPage);
 		pageVO.setTotalCount(totalCount);
 		pageVO.setPageVO();
+		
+		System.out.println(request.getAttribute("msg"));
 		
 		List<BoardVO> list = dao.boardList(pageVO);
 		request.setAttribute("list", list);
